@@ -4,7 +4,7 @@ services:
     restart: always
     environment:
       - POSTGRES_USER=app
-      - POSTGRES_PASSWORD=changethis
+      - POSTGRES_PASSWORD=peixinho
       - POSTGRES_DB=app
     ports:
       - "5432:5432"
