@@ -8,7 +8,8 @@ dependencies = [
     "psycopg[binary]",
     "pydantic-settings",
     "alembic",
-    "uvicorn"
+    "uvicorn",
+    "ruff"
 ]
 
 [tool.mypy]
