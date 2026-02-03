@@ -1,11 +1,7 @@
 from fastapi import FastAPI
 
 from app.core.config import settings
+from app.api.main import api_router
 
-print(f"Banco configurado: {settings.SQLALCHEMY_DATABASE_URI}")
-
-app = FastAPI(title="Workout API Enterprise")
-
-@app.get("/")
-def read_root():
-    return {"message": "Ambiente robusto configurado com sucesso!"}
+app = FastAPI(title=settings.PROJECT_NAME, version=settings.PROJECT_VERSION)
+app.include_router(api_router,prefix=settings.API_V1_STR)

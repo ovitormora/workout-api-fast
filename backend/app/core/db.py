@@ -5,7 +5,7 @@ from app.core.config import settings
 
 # "True e Echo" servem para ajudar o debug durante o dev
 engine = create_async_engine(
-    str(settings.SQLALCHEMY_DATABASE_URL),
+    str(settings.SQLALCHEMY_DATABASE_URI),
     echo=True,
     future=True
 )

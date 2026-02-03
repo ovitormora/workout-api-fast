@@ -1,6 +1,9 @@
-FROM python:3.10
+FROM python:3.10-slim
 
 WORKDIR /app/
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 # Instala o uv (gerenciador de pacotes rápido usado no template atualizado)
 # Ou podemos usar pip normal. Para simplificar didaticamente, usaremos pip padrão aqui:

@@ -13,6 +13,7 @@ class Settings(BaseSettings):
 
     API_V1_STR: str = "/api/v1"
     PROJECT_NAME: str = "Workout API Enterprise"
+    PROJECT_VERSION: str = "0.0.1"
 
     # Configurações do Banco de Dados
     POSTGRES_SERVER: str
