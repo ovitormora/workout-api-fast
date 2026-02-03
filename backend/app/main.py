@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+
 from app.core.config import settings
 
 print(f"Banco configurado: {settings.SQLALCHEMY_DATABASE_URI}")

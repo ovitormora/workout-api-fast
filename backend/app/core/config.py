@@ -1,6 +1,7 @@
-from pydantic import PostgresDsn, computed_field
+from pydantic import computed_field
 from pydantic_core import MultiHostUrl
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
@@ -24,7 +25,8 @@ class Settings(BaseSettings):
     @property
     def SQLALCHEMY_DATABASE_URI(self) -> str:
         return MultiHostUrl.build(
-            scheme="postgresql+psycopg", # Usamos o driver psycopg (instalado na Etapa 1)
+            scheme="postgresql+psycopg",
+
             username=self.POSTGRES_USER,
             password=self.POSTGRES_PASSWORD,
             host=self.POSTGRES_SERVER,

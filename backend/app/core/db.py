@@ -1,5 +1,6 @@
-from sqlmodel import SQLModel
 from sqlalchemy.ext.asyncio import create_async_engine
+from sqlmodel import SQLModel
+
 from app.core.config import settings
 
 # "True e Echo" servem para ajudar o debug durante o dev

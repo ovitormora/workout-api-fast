@@ -1,6 +1,8 @@
-import uuid 
+import uuid
 from datetime import datetime
-from sqlmodel import SQLModel, Field, Relationship
+
+from sqlmodel import Field, Relationship, SQLModel
+
 
 class CategoriaBase(SQLModel):
     nome: str = Field(index=True,unique=True, min_length=3, max_length=50)
