@@ -1,17 +1,26 @@
-FROM python:3.10-slim
+FROM python:3.10-slim as base
 
 WORKDIR /app/
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-
-# Instala o uv (gerenciador de pacotes rápido usado no template atualizado)
-# Ou podemos usar pip normal. Para simplificar didaticamente, usaremos pip padrão aqui:
-COPY pyproject.toml .
-RUN pip install .
-
-COPY . .
-
 ENV PYTHONPATH=/app
 
+# Copia e instala apenas o necessário para o setup básico
+COPY pyproject.toml .
+
+# --- Estágio de Desenvolvimento ---
+FROM base as dev
+# Instala com dependências de teste e extras opcionais
+RUN pip install ".[test]"
+COPY . .
+# Comando padrão para dev (com reload)
+CMD ["fastapi", "run", "app/main.py", "--port", "8000", "--host", "0.0.0.0", "--reload"]
+
+# --- Estágio de Produção ---
+FROM base as prod
+# Instala apenas dependências de produção
+RUN pip install .
+COPY . .
+# Comando padrão para prod (sem reload)
 CMD ["fastapi", "run", "app/main.py", "--port", "8000", "--host", "0.0.0.0"]
