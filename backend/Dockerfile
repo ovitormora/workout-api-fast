@@ -14,6 +14,12 @@ FROM base as dev
 # Instala com dependências de teste e extras opcionais
 RUN pip install ".[test]"
 COPY . .
+
+# Add entrypoint script
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
+ENTRYPOINT ["/app/entrypoint.sh"]
 # Comando padrão para dev (com reload)
 CMD ["fastapi", "run", "app/main.py", "--port", "8000", "--host", "0.0.0.0", "--reload"]
 
@@ -22,5 +28,11 @@ FROM base as prod
 # Instala apenas dependências de produção
 RUN pip install .
 COPY . .
+
+# Add entrypoint script
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
+ENTRYPOINT ["/app/entrypoint.sh"]
 # Comando padrão para prod (sem reload)
 CMD ["fastapi", "run", "app/main.py", "--port", "8000", "--host", "0.0.0.0"]

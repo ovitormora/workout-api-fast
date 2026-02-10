@@ -1,0 +1,151 @@
+/*
+  ============================================
+  DESIGN SYSTEM — My Workout API
+  ============================================
+  
+  Este arquivo define o "design system" do projeto.
+  
+  🎓 O QUE É UM DESIGN SYSTEM?
+  É um conjunto de regras visuais (cores, fontes, espaçamentos)
+  que garantem consistência em TODA a aplicação. Em vez de 
+  escolher cores manualmente em cada componente, usamos 
+  variáveis CSS definidas aqui.
+
+  🎓 O QUE SÃO CSS CUSTOM PROPERTIES ( --variavel )?
+  São variáveis reutilizáveis no CSS. Definimos uma vez aqui
+  e usamos em qualquer lugar com var(--nome-da-variavel).
+  Isso facilita mudar o visual inteiro alterando apenas este arquivo.
+*/
+
+/* ===== Google Fonts ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ===== Variáveis Globais (Design Tokens) ===== */
+:root {
+  /* --- Cores Primárias --- */
+  --color-primary: #6C5CE7;         /* Roxo vibrante — cor principal */
+  --color-primary-hover: #5A4BD1;   /* Roxo mais escuro para hover */
+  --color-primary-light: #A29BFE;   /* Roxo claro para destaques sutis */
+  
+  /* --- Cores de Status --- */
+  --color-success: #00B894;         /* Verde — sucesso */
+  --color-warning: #FDCB6E;         /* Amarelo — atenção */
+  --color-danger: #E17055;          /* Vermelho — erro/perigo */
+  --color-info: #74B9FF;            /* Azul — informação */
+
+  /* --- Cores Neutras (fundo, texto, bordas) --- */
+  --color-bg-primary: #0F0F1A;      /* Fundo principal (quase preto) */
+  --color-bg-secondary: #1A1A2E;    /* Fundo de cards/sections */
+  --color-bg-tertiary: #25253E;     /* Fundo de inputs/hover */
+  --color-text-primary: #EAEAEA;    /* Texto principal (quase branco) */
+  --color-text-secondary: #8B8B9E;  /* Texto secundário (cinza) */
+  --color-text-muted: #5A5A72;      /* Texto bem sutil */
+  --color-border: #2D2D45;          /* Bordas */
+  --color-border-hover: #3D3D5C;    /* Bordas no hover */
+
+  /* --- Tipografia --- */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 2rem;      /* 32px */
+
+  /* --- Espaçamentos --- */
+  --spacing-xs: 0.25rem;   /* 4px */
+  --spacing-sm: 0.5rem;    /* 8px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 3rem;     /* 48px */
+
+  /* --- Border Radius (arredondamento) --- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;   /* Totalmente redondo */
+
+  /* --- Sombras --- */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+
+  /* --- Transições --- */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+
+  /* --- Layout --- */
+  --sidebar-width: 260px;
+  --header-height: 64px;
+}
+
+/* ===== Reset & Base ===== */
+/*
+  🎓 O QUE É UM CSS RESET?
+  Cada navegador tem estilos padrão diferentes. O reset
+  remove esses padrões para que o visual fique igual em 
+  todos os navegadores.
+*/
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--color-primary-light);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-family);
+}
+
+input, select, textarea {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ===== Utilidades ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
